@@ -519,6 +519,10 @@ namespace _4RTools.Model
                 new Buff("Deep Sleep", EffectStatusIDs.EFST_DEEP_SLEEP, Resources._4RTools.Icons.deep_sleep),
                 new Buff("Posion", EffectStatusIDs.POISON, Resources._4RTools.Icons.poison_status),
                 new Buff("Lucky Water", EffectStatusIDs.EFST_HANDICAPSTATE_MISFORTUNE, Resources._4RTools.Icons.water_of_lucky),
+                new Buff("Strip Helm", EffectStatusIDs.EFST_NOEQUIPHELM, Resources._4RTools.Icons.strip_helm),
+                new Buff("Strip Shield", EffectStatusIDs.EFST_NOEQUIPSHIELD, Resources._4RTools.Icons.strip_shield),
+                new Buff("Strip Armor", EffectStatusIDs.EFST_NOEQUIPARMOR, Resources._4RTools.Icons.strip_armor),
+                new Buff("Strip Weapon", EffectStatusIDs.EFST_NOEQUIPWEAPON, Resources._4RTools.Icons.strip_weapon),
             };
 
             return skills;

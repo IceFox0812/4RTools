@@ -29,6 +29,10 @@ namespace _4RTools.Utils
         MISTY_FROST = 1141,
         CRITICALWOUND = 286,
         OVERHEAT = 373,
+        EFST_NOEQUIPWEAPON = 50,
+        EFST_NOEQUIPSHIELD = 51,
+        EFST_NOEQUIPARMOR = 52,
+        EFST_NOEQUIPHELM = 53,
         // New status 3RD
         EFST_SIT = 622,
         EFST_FREEZING = 351,

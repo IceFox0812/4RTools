@@ -12,7 +12,7 @@ namespace _4RTools.Forms
     public partial class DebuffRecoveryForm : Form, IObserver
     {
 
-        private List<BuffContainer> skillContainers = new List<BuffContainer>();
+        private readonly List<BuffContainer> skillContainers = new List<BuffContainer>();
 
         public DebuffRecoveryForm(Subject subject)
         {
@@ -21,10 +21,10 @@ namespace _4RTools.Forms
 
             this.txtStatusKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             this.txtStatusKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.txtStatusKey.TextChanged += new EventHandler(onStatusKeyChange);
+            this.txtStatusKey.TextChanged += new EventHandler(OnStatusKeyChange);
             this.txtNewStatusKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             this.txtNewStatusKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.txtNewStatusKey.TextChanged += new EventHandler(on3RDStatusKeyChange);
+            this.txtNewStatusKey.TextChanged += new EventHandler(On3RDStatusKeyChange);
 
             skillContainers.Add(new BuffContainer(this.DebuffRecoveryGP, Buff.GetDebuffs()));
 
@@ -56,7 +56,7 @@ namespace _4RTools.Forms
             }
         }
 
-        private void onStatusKeyChange(object sender, EventArgs e)
+        private void OnStatusKeyChange(object sender, EventArgs e)
         {
             Key k = (Key)Enum.Parse(typeof(Key), this.txtStatusKey.Text.ToString());
 
@@ -67,11 +67,15 @@ namespace _4RTools.Forms
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.HALLUCINATIONWALK, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.HALLUCINATION, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.CURSE, k);
+            ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.EFST_NOEQUIPWEAPON, k);
+            ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.EFST_NOEQUIPARMOR, k);
+            ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.EFST_NOEQUIPHELM, k);
+            ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.EFST_NOEQUIPSHIELD, k);
 
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().StatusRecovery);
         }
 
-        private void on3RDStatusKeyChange(object sender, EventArgs e)
+        private void On3RDStatusKeyChange(object sender, EventArgs e)
         {
             Key k = (Key)Enum.Parse(typeof(Key), this.txtNewStatusKey.Text.ToString());
 
@@ -85,7 +89,7 @@ namespace _4RTools.Forms
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().StatusRecovery);
         }
 
-        private void autoStandCB_CheckedChanged(object sender, EventArgs e)
+        private void AutoStandCB_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chk = sender as CheckBox;
             ProfileSingleton.GetCurrent().StatusRecovery.autoStand = chk.Checked;
